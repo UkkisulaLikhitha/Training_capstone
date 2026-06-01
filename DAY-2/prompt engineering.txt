@@ -1,0 +1,33 @@
+Task-1
+
+
+From: priya.sharma@gmail.com To: support@northernbank.co.uk Subject: URGENT - Fraudulent transactions on my account!! Date: Monday, 13 May 2026, 09:14 
+Hello, I'm absolutely furious right now. I checked my account this morning and there are THREE transactions I did not make: - £340 at "Tech Store Croydon" on 10 May - £89.99 at some online shop called "ElectroHub" on 11 May £220 at a petrol station in Manchester on 12 May I live in Bristol. 
+I have NEVER been to Manchester. I use this account for my salary and I have bills going out on the 15th. I am a customer of 12 years. 
+This is absolutely unacceptable. If this isn't resolved TODAY I will be contacting the Financial Ombudsman and switching banks immediately. Please call me urgently on 07700
+
+900142. Priya Sharma Account: ****4892
+
+customer email
+
+Write a couple of prompts to generate a reply to this customer email.
+
+
+can copy and use directly:
+
+Subject: Urgent Response - Fraudulent Transactions on Your Account
+
+Dear Ms. Sharma,
+
+Thank you for contacting us regarding the unauthorized transactions on your account. We understand how distressing this situation is and we take such matters very seriously.
+
+We have immediately escalated your case to our Fraud Investigation Team. The transactions you reported (£340 at Tech Store Croydon, £89.99 at ElectroHub, and £220 at a petrol station in Manchester) are being reviewed urgently. Your account has been temporarily secured to prevent further unauthorized activity.
+
+A member of our team will contact you directly on the phone number you provided today to verify details and assist you further. In the meantime, please rest assured that we will ensure your upcoming payments and bills are not disrupted.
+
+We sincerely apologize for the inconvenience caused and appreciate your patience as we resolve this matter.
+
+Kind regards,
+Northern Bank Customer Support
+
+
