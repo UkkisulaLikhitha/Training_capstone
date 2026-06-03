@@ -1,0 +1,39 @@
+step 1: create github repository
+audit-ai-marvel
+
+step 2: clone the repository
+git clone https://github.com/UkkisulaLikhitha/audit-ai-marvel.git
+
+step 3:create new branch
+git checkout -b dev
+
+step 4: create a file
+requirements.txt
+
+Add 3 python packages:
+Numpy
+Pandas
+Requests
+
+step 5: stage and commit changes
+git add .
+git commit -m "added new text file "
+
+step 6: push branch
+git push origin dev
+
+
+step 7: open a pull request in github
+created pull request in github from dev to main branch
+i'm working individually, no reviewer was assigned
+
+
+step 8: after creation
+pull request .changes:
+git pull origin dev
+
+
+deliverable:
+share the PR link with facilitator
+https://github.com/UkkisulaLikhitha/audit-ai-marvel/tree/dev
+ 

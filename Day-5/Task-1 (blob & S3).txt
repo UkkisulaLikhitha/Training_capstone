@@ -1,0 +1,77 @@
+Day-5 Task:
+
+Object Storage:
+
+LinkedIn is a heavy media social platform where users continuously upload and consume content such as:
+
+Profile images
+Videos and images in posts
+Documents (resumes, certificates)
+Files in messages
+
+To efficiently store and deliver this large amount of unstructured data, we use Object Storage.
+Object storage is a system used to store large, unstructured files like:
+
+Images
+Videos
+PDFs
+Documents
+
+Each file is stored as an object
+Each object has unique URL
+Highly scalable and durable Optimized for large file storage
+
+
+Why LinkedIn Uses Object Storage
+
+LinkedIn handles millions of users and large volumes of media.
+Reasons:
+Media files are too large for databases
+Frequent uploads and downloads. Need for fast global delivery
+Scalable storage requirement
+
+Amazon S3 Overview
+
+Strengths:
+
+Global infrastructure Fast worldwide access
+Strong CDN integration (CloudFront)
+Event-driven processing (Lambda triggers)
+High scalability for large traffic
+Multiple storage tiers (cost optimization)
+
+Weaknesses:
+
+High data egress (download) cost
+Compliance setup requires manual configuration
+Limited native integration with Microsoft identity systems
+
+Azure Blob Storage Overview Strengths:
+
+Strong integration with Microsoft ecosystem (Office 365, Entra ID)
+Built-in security and compliance features
+Lifecycle management (Hot, Cool, Archive tiers)
+Event-driven automation using Event Grid & Azure Functions
+Immutable storage (data protection)
+
+Weaknesses
+
+Smaller CDN footprint compared to AWS
+Slower archive data retrieval
+Slight latency in serverless execution
+
+ 
+Final Recommendation Amazon S3 is the Best Choice: 
+Reasons:
+
+Better performance globally
+Stronger CDN for fast content delivery
+Handles media-heavy workloads efficiently
+Optimized for high read traffic (feeds)
+handles millions of users
+
+When to Choose Azure Blob Storage:
+
+Application is enterprise-focused
+Heavy integration with Microsoft services
+Strict data compliance and regulations are required
