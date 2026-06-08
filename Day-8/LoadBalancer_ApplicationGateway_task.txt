@@ -1,0 +1,47 @@
+
+TASK 2 - LOAD BALANCER vs APPLICATION GATEWAY
+=============================================
+
++----+-------------------------------+----------------------+-----------------------------------------------------------+
+| #  | Requirement                   | Classification       | Key Reason                                                |
++----+-------------------------------+----------------------+-----------------------------------------------------------+
+| 1  | Patient Web Portal            | Application Gateway  | HTTPS, WAF, SSL termination, public website access       |
+| 2  | Clinical API (Internal)       | Load Balancer        | TCP traffic, internal systems only, no public access     |
+| 3  | DICOM Image Streaming         | Load Balancer        | Non-HTTP traffic, long-lived connections                 |
+| 4  | Authentication (Header Route)| Application Gateway  | Header-based routing and Layer-7 inspection              |
+| 5  | Legacy SOAP Lab Service       | Load Balancer        | TCP-based service, simple failover, no content inspection|
+| 6  | Admin Dashboard (Hostname)    | Application Gateway  | Hostname-based routing (multi-site hosting)              |
++----+-------------------------------+----------------------+-----------------------------------------------------------+
+
+
+SUMMARY
+=======
+
+APPLICATION GATEWAY
+-------------------
+✓ Patient Web Portal
+✓ Authentication (Header Routing)
+✓ Admin Dashboard (Hostname Routing)
+
+Reasons:
+- Layer 7 (HTTP/HTTPS)
+- WAF Support
+- SSL Termination
+- Host-based Routing
+- Path-based Routing
+- Header-based Routing
+
+
+LOAD BALANCER
+-------------
+✓ Clinical API (Internal)
+✓ DICOM Image Streaming
+✓ Legacy SOAP Lab Service
+
+Reasons:
+- Layer 4 (TCP/UDP)
+- High Performance
+- Non-HTTP Workloads
+- Long-lived Connections
+- Simple Load Distribution
+- Internal Traffic Routing

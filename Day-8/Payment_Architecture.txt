@@ -1,0 +1,45 @@
+
+PAYMENT PLATFORM INTEGRATION ARCHITECTURE
+========================================
+
++----+-----------------------------+-----------+------------------------------------------------------------+
+| ID | Integration                 | Answer    | Reason                                                     |
++----+-----------------------------+-----------+------------------------------------------------------------+
+| A  | Settlement command          | Queue     | Exactly-once, single consumer, retry on failure           |
+| B  | Payment received broadcast  | Event Bus | Multiple consumers subscribe to same event                |
+| C  | SMS / Push notifications    | Queue     | Worker pool, one message handled by one worker            |
+| D  | Fraud score request         | Queue     | Request-reply (1-to-1) communication                      |
+| E  | Account state change events | Event Bus | Broadcast to multiple interested systems                  |
+| F  | End-of-day reconciliation   | Queue     | Task distribution across worker pool                      |
++----+-----------------------------+-----------+------------------------------------------------------------+
+
+
+UNIFIED BLOCK DIAGRAM
+=====================
+
+                         [Merchant API]
+                                |
+                                v
+                         [Payment Core]
+                      /      |      |      \
+                     /       |      |       \
+                    v        v      v        v
+
+      (A) Settlement   (D) Fraud Req   (B) Payment Events   (E) Account Events
+           Queue           Queue           Event Bus            Event Bus
+             |               |            /    |    \          /   |    \
+             v               v           v     v     v        v    v     v
+         [Ledger]      [Fraud Eng] [Analytics][Notify][Fraud] [Portal][Comp][Analytics]
+                                           |
+                                           v
+
+                                (C) Notification Queue
+                                           |
+                                           v
+                                       [Workers]
+
+
+                                (F) Batch Processing Queue
+                                           |
+                                           v
+                                       [Workers]

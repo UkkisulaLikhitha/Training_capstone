@@ -1,0 +1,37 @@
+ 
+Q: create one block diagram for all the above integration:
+
+
+                       [Merchant API]
+                               |
+                               v
+                        [Payment Core]
+                         /     |      \
+                        /      |       \
+                       v       v        v
+
+          (A) Settlement   (D) Fraud Req   (E) Account Events
+               Queue           Queue           Event Bus
+                 |               |            /    |     \
+                 v               v           v     v      v
+             [Ledger]      [Fraud Eng]   [Portal][Comp][Analytics]
+                 |
+                 v
+
+          (B) Payment Events Event Bus
+               /         |          \
+              v          v           v
+        [Analytics]  [Notify]    [Fraud]
+                          |
+                          v
+
+              (C) Notification Queue
+                          |
+                          v
+                      [Workers]
+
+
+              (F) Batch Processing Queue
+                          |
+                          v
+                      [Workers]

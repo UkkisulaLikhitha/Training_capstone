@@ -1,0 +1,33 @@
+Facebook does not use a centralized Load Balancer for Memcache requests.
+
+Instead, they use:
+
+Client-side sharding (consistent hashing)
+Multiple memcache pools
+Regional cache hierarchy
+Request routing logic inside the application/client library
+
+
+High-Level Architecture:
+                  Web Servers
+                        |
+                        |
+               Memcache Client
+            (Consistent Hashing)
+                        |
+      ---------------------------------
+      |        |        |       |      |
+      v        v        v       v      v
+   Cache1   Cache2   Cache3  Cache4 Cache5
+
+
+
+Why Facebook Avoided Load Balancers:
+Problems:
+
+Extra network hop
+Single bottleneck
+Cache locality lost
+Huge scale (trillions of requests/day)
+
+Because memcache is key-based storage, the client already knows where the key should live
