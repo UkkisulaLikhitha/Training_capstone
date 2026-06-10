@@ -1,0 +1,96 @@
+Day 10- Task 3
+
+Card A: Multilingual Email Triage (Customer Service)
+Problem:
+8000 emails/day in 12 languages manual classification takes 7 min/email.
+Solution:
+Use AI to read, understand, and classify emails automatically.
+GenAI Type:
+Text Generation
+
+Model:
+Claude 3.5 Sonnet / GPT-40
+
+Impact:
+time saved
+High cost reduction.
+Better consistency
+--------------------------------------------------------------------------------------------------------------
+Card B: Regulatory Update Review (Compliance)
+Problem: I Team reviews 300-page regulatory updates monthly, 40% time spent manually extracting info.
+
+Solution
+AI reads long documents and generates:
+Summaries
+Key points
+Important changes.
+
+GenAI Type
+Text Summarization (Text Generation)
+
+Model
+Claude 3.5/ GPT-40
+
+Impact
+Huge time saving
+Faster compliance review Reduced manual effort
+-------------------------------------------------------------------------------------------------------------------
+Card C: Fraud Alert Narratives (Fraud Detection)
+
+Problem: Fraud team must explain transaction decline reasons to customers quickly.
+
+Solution:
+AI generates clear explanations:
+"Transaction declined due to unusual location/activity"
+
+GenAI Type: 	 Text Generation
+Model:	 Claude / GPT-40
+
+Impact
+Instant explanations Better customer understanding Reduced support calls
+
+-------------------------------------------------------------------------------------------------------
+Card D: Synthetic Fraud Training Data (Fraud Detection)
+
+Problem: Only 50K fraud samples not enough data (cannot use real data due to GDPR)
+
+Solution
+AI generates synthetic fraud data for training models.
+
+GenAI Type
+Synthetic Data Generation
+
+Model
+GANS / Diffusion / LLM-based
+
+Impact:
+More training data
+No privacy issues
+Better fraud detection accuracy
+----------------------------------------------------------------------------------------------------------------
+Card E: Personalised Marketing Copy (Growth)
+
+Problem: Need 200 variations of marketing content for different customer segments.
+
+Solution: AI generates personalized ads/messages.
+
+GenAI Type:  Text Generation
+
+Model:  GPT-40/Claude
+
+Impact
+Faster content creation
+Better targeting
+Higher conversion rates
+-----------------------------------------------------------------------------------------------------------------
+Card F: Developer Boilerplate Generation (Engineering) Developers 
+Problem: write 600 lines of repetitive code time-consuming.
+Solution:
+AI generates boilerplate code automatically.
+GenAI Type : Code Generation
+Model: GitHub Copilot / Codex
+
+Impact
+Faster development
+Developer productivity
+effort reduction
