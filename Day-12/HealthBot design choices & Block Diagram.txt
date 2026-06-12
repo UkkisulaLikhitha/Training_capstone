@@ -1,0 +1,165 @@
+1. Azure AI Search (Hybrid) vs Weaviate on AKS
+Selected: Azure AI Search (Hybrid)
+
+Keyword Search – for exact terms such as drug names, medical protocols, and clinical codes.
+Semantic Search – to understand the meaning and intent behind a clinician’s question.
+
+Why Azure AI Search?
+It is a fully managed Azure service.
+Provides strong security and enterprise-grade compliance features.
+Requires minimal infrastructure management.
+Easily integrates with other Azure services.
+Suitable for handling sensitive healthcare information.
+
+Azure AI Search combines:
+Search Type					Purpose
+BM25 Keyword Search--> Finds exact matches such as drug names, dosages, and protocols
+Vector Search  -->	Finds semantically relevant information based on meaning
+
+Conclusion:
+Azure AI Search is the preferred solution because it is secure, easy to manage, and supports both keyword and semantic search capabilities required for medical question answering systems.
+
+--------------------------------------------------------------------------------------------------------
+
+2. Chunk Size Selection: 256 vs 1024 Tokens
+Selected: 256 Tokens with Overlap
+
+Why Smaller Chunks?
+Medical documents often contain:
+Drug dosage information
+Clinical guidelines
+Short factual statements
+Diagnostic criteria
+Treatment recommendations
+Bullet-pointed procedures
+
+Smaller chunks help the retrieval system locate precise information.
+
+Benefits of 256-Token Chunks:
+Higher retrieval accuracy
+Better matching of specific medical facts
+Reduced irrelevant context
+Improved answer quality
+Faster search performance
+Why Not 1024 Tokens?
+Large chunks can:
+Mix multiple medical topics together
+Introduce irrelevant information
+Reduce retrieval precision
+Increase context noise
+Conclusion:
+Using 256-token chunks with overlap provides more accurate and clinically relevant retrieval results for healthcare applications.
+---------------------------------------------------------------------------------------------------------
+
+3. Large Context Window vs Retrieval
+Selected: Hybrid RAG Approach
+
+The system uses both:
+Retrieval
+LLM Context Window
+
+ Component        	 			Purpose                                                            
+ --------------             ------------------------------------------------------------------ 
+ Retrieval      			 Finds relevant medical information                                 
+ Context Window             Helps the LLM understand and reason over the retrieved information 
+
+
+Why Not Use Only a Large Context Window?
+Healthcare knowledge bases can contain millions of documents.
+
+Problems:
+Impossible to load all information into a single prompt
+High computational cost
+Increased latency
+Expensive inference
+
+Why Not Use Only Retrieval?
+Retrieval returns text passages but does not:
+Interpret information
+Explain medical concepts
+Generate clinician-friendly responses
+
+How the Hybrid Approach Works
+Retrieve relevant medical documents.
+Select the most relevant chunks.
+Send retrieved content to the LLM.
+LLM analyzes and understands the context.
+Generate a clear and concise answer.
+
+-------------------------------------------------------------------------------------------------------
+4. Multi-Index Strategy
+Selected: Separate Domain-Specific Indexes
+The system maintains separate indexes for different medical specialties.
+
+Examples:
+Cardiology Index
+Oncology Index
+Drug Interaction Index
+Pharmacy Index
+
+Why Separate Indexes?
+When a clinician asks a question related to cardiology:
+Search is performed only within the Cardiology Index.
+Unrelated oncology or pharmacy content is excluded.
+Benefits
+Faster retrieval
+Higher accuracy
+Reduced noise
+Better relevance ranking
+Improved scalability
+Example
+Question: "What is the recommended dosage of aspirin after myocardial infarction?"
+
+Search Process:
+Intent detection identifies a cardiology-related query.
+Query is routed to the Cardiology Index.
+Relevant cardiology documents are retrieved.
+Results are ranked and passed to the LLM.
+Conclusion
+A multi-index strategy improves search efficiency and answer quality by directing queries to the most relevant medical domain.
+------------------------------------------------------------------------------------------------------------------
+Final Architecture Summary:
+
+Clinician (User)
+        ?
+        ?
+Frontend (Web / Teams)
+        ?
+        ?
+API Layer (FastAPI)
+        ?
+        ?
+Query Processing
+ • Intent Detection
+ • Domain Routing
+        ?
+        ?
+ ????????????????????????????????????????
+ ? Cardiology ? Oncology   ? Pharmacy   ?
+ ?   Index    ?   Index    ?   Index    ?
+ ????????????????????????????????????????
+        ?
+        ?
+Azure AI Search (Hybrid)
+ • BM25 Keyword Search
+ • Vector Semantic Search
+        ?
+        ?
+Retrieve Top-K Chunks
+        ?
+        ?
+Re-ranking
+        ?
+        ?
+LLM Context Window
+ (Understand + Reason)
+        ?
+        ?
+Azure OpenAI / Claude
+        ?
+        ?
+Safety Layer
+ (HIPAA Controls)
+        ?
+        ?
+Final Clinical Response
