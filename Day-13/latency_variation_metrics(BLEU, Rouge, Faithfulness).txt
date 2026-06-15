@@ -1,0 +1,49 @@
+The latency variation is mostly caused by the "Claude generate" stage, not by embedding or retrieval.
+
+Root cause of latency variation:
+
+LLM generation is the biggest contributor:
+
+For queries like Q3, Q6, Q7, the green bar is very large, which means the model spent much more time generating the answer.
+
+
+This usually happens when:
+
+the response is longer
+the reasoning is more complex
+
+
+BLUE:
+
+BLEU measures word-level precision, BLEU focuses on exact phrase overlap, not depth or grounding.
+
+BLEU is less useful for explaining the latency variation because BLEU measures exact wording overlap with a reference answer. 
+A slower response does not necessarily produce wording closer to the reference.
+
+
+
+ROUGE:
+
+Queries with higher latency may have better ROUGE scores because the model is covering more relevant information from the retrieved documents.
+
+ROUGE is more relevant, because longer generation often means the model is including more of the important content from retrieved documents, leading to better content coverage. I
+
+
+Faithfulness:
+
+because the model is not just replying quickly it is generating a more evidence-based answer.
+
+Faithfulness is the most relevant metric here, because increased generation time may indicate that the model is using retrieved evidence more 
+carefully and producing a more grounded, less hallucinated answer.
+
+
+
+therefore:
+
+The main cause of latency variation is response generation complexity, and this variation is better interpreted through ROUGE and faithfulness
+ rather than BLEU.
+
+One-line answer:
+
+The latency variation is mainly driven by the generation stage, and in quality terms it is more closely related to 
+ROUGE (content coverage) and faithfulness (groundedness) than to BLEU (exact wording match).
