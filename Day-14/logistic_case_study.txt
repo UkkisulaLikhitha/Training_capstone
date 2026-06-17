@@ -1,0 +1,32 @@
+LangChain + LlamaIndex
+
+LangChain → best for orchestration, classification, agents, and ticketing API integration
+LlamaIndex → best for fast and accurate retrieval of policy documents (RAG layer)
+
+Step 1: Email Ingestion, Email Classification (LangChain)
+Collect 10,000+ emails/day, Preprocess: clean text, remove signatures, extract metadata
+Use LLM or fine-tuned classifier
+Categories: billing, delivery issue, complaint, refund, etc.
+Route emails based on class
+
+Step 2 : Knowledge Retrieval (LlamaIndex)
+
+Index company policy documents, FAQs, shipment rules
+Use semantic search to fetch relevant policy chunks for each email
+
+
+Step 3: Draft Reply Generation (LangChain + LLM)
+email content
+retrieved policy context
+Generate structured draft response using prompt templates
+
+
+Step 4: Escalation Logic (LangChain Agent)
+
+trigger escalation tool
+send to ticketing API 
+Human agent reviews escalated 
+
+
+
+
