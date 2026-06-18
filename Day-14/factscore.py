@@ -63,11 +63,11 @@ score = factscore(answer, kb_embeddings)
 
 print("FactScore:", round(score, 3))
 
-# 🚨 Hallucination check
+#  Hallucination check
 if score >= 0.8:
-    print("✅ Low hallucination")
+    print(" Low hallucination")
 elif score >= 0.6:
-    print("⚠️ Medium hallucination risk")
+    print("Medium hallucination risk")
 else:
-    print("🚨 High hallucination detected")
+    print("High hallucination detected")
 
