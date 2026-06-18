@@ -1,0 +1,108 @@
+while using the planner architecture , can u distinguish between LTM, STM components for annual budgeting??
+ budgeting for commute, defence, agriculture and government domains?
+
+STM (Short-Term Memory) — Annual Budget Context:
+
+This is dynamic, task-specific, and resets each budgeting cycle
+Contains:
+Current fiscal year constraints (e.g., ₹ budget ceiling)
+Department-wise allocations under discussion
+Live proposals and drafts
+Scenario comparisons (optimistic / baseline / austerity)
+Current inflation, GDP assumptions for THIS year
+Temporary policy changes
+Negotiation inputs between ministries
+
+LTM (Long-Term Memory) — Institutional Knowledge:
+
+This is persistent across years
+Contains:
+Historical budget allocations (last 10–20 years)
+Policy frameworks (e.g., FRBM Act, fiscal deficit rules)
+Sector growth patterns
+Infrastructure lifecycle costs
+Strategic national priorities
+Demographic projections
+International commitments (SDGs, defence treaties)
+
+
+A. Commute / Transport Budgeting:
+
+LTM (knowledge base):
+
+Metro projects take 8–12 years
+Urban congestion rising 6% yearly
+Historical ROI of rail vs road investment
+Past infrastructure backlog in cities
+
+STM (this year plan):
+
+Allocate ₹X for metro expansion in Bengaluru
+Fuel subsidy adjustment for FY 2026–27
+EV charging station rollout target this year
+
+
+ B. Defence Budgeting
+LTM:
+Minimum deterrence doctrine
+10-year procurement cycles
+Border threat history trends
+Equipment aging curves (fighter jets, naval fleets)
+
+STM
+This year’s procurement (drones, aircraft, missiles)
+Emergency border deployment funding
+Salary + pension adjustments for forces
+
+C. Agriculture Budgeting
+
+LTM
+Crop yield trends over decades
+Monsoon dependency patterns
+MSP (Minimum Support Price) history
+Soil degradation statistics
+
+STM
+Fertilizer subsidy for this year
+Drought relief allocation
+Farmer income support scheme update
+Crop insurance payout for current season
+
+D. Government (General Fiscal Budget)
+
+LTM
+Fiscal deficit rules (FRBM limits)
+Tax elasticity trends
+Welfare scheme effectiveness history
+Demographic shifts (aging population, urbanization)
+
+STM
+Tax slab changes for current year
+Welfare scheme budget allocation
+Short-term stimulus package
+Emergency disaster funds
+
+
+
+Simple Architecture View:
+
+            ┌──────────────┐
+            │    LTM       │
+            │ history +    │
+            │ policies     │
+            └──────┬───────┘
+                   │
+                   ▼
+        ┌───────────────────┐
+        │   Planner Agent   │
+        │ (Budget Reasoner) │
+        └────────┬──────────┘
+                 │
+        ┌────────▼────────┐
+        │       STM       │
+        │ current FY plan │
+        │ drafts & limits │
+        └────────┬────────┘
+                 │
+                 ▼
+        Final Budget Output

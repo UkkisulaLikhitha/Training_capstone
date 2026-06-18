@@ -1,0 +1,138 @@
+Clinical note risk flagging
+
+Run this exact prompt on all 3 models
+"Summarise this patient note and flag any clinical or documentation risks: 'Pt c/o chest pain ×2 days. Vitals stable. EKG done - unremarkable. Discharged home with ibuprofen and advised to
+follow up if symptoms worsen. No troponin ordered. Attending noted time pressure due to ED volume."
+
+
+Patient Summary
+A patient with 2 days of chest pain was evaluated in the ED with stable vital signs, an unremarkable EKG, and was sent home with ibuprofen. No troponin test was ordered.
+
+
+HAIKU:
+
+
+CRITICAL CLINICAL RISKS
+1. MISSING CARDIAC MARKER TEST (Troponin)
+Why this is dangerous:
+
+Troponin is the gold standard blood test to detect if the heart muscle has been damaged
+An EKG can appear normal even when there IS heart damage
+Chest pain + no troponin = incomplete evaluation
+Patient could have a heart attack at home and no one caught it
+
+2. PREMATURE DISCHARGE
+What went wrong:
+
+Patient was sent home without ruling out serious causes of chest pain
+Chest pain lasting 2 days is not trivial
+Should have had either:
+
+Serial troponins (drawn at 0, 3, and 6 hours), OR
+Admission for observation, OR
+Clear cardiology follow-up arranged BEFORE discharge
+
+
+
+3. TIME PRESSURE BIAS (COGNITIVE ERROR)
+The biggest problem:
+
+Doctor noted "time pressure due to ED volume"
+This is a known cause of premature closure - doctors stop investigating when busy
+The doctor made a decision quickly without complete workup
+This is documented in the note, which is actually dangerous evidence
+
+4. VAGUE DISCHARGE INSTRUCTIONS
+Follow-up instruction problem:
+
+"Follow up if symptoms worsen" is unclear
+What if pain stays the same or gets slightly better?
+Patient might think "it's getting better" and not seek help
+Better instruction: "Return immediately for any chest pain, shortness of breath, or sweating"
+
+5. MISSING DOCUMENTATION
+What should be documented but isn't:
+
+Why troponin was NOT ordered (no documented reasoning)
+Risk stratification (does patient have diabetes, smoking history, family history?)
+Specific return precautions
+
+
+
+OPUS:
+Clinical risks
+The biggest concern is that chest pain was not fully worked up before discharge. 
+A normal EKG alone does not rule out a heart attack or other serious heart problem. 
+The troponin blood test, which detects heart muscle damage, was not ordered, so a real cardiac event could have been missed.
+
+Ibuprofen treats pain and inflammation but does nothing for a blocked artery, 
+so giving it could mask symptoms while the underlying problem continues.
+The discharge advice — "come back if symptoms worsen" — is too vague. 
+Chest pain can stay the same or even ease off while a dangerous condition is still developing, 
+and a patient might wrongly decide they're fine.
+
+Documentation risks
+Writing down that the decision was made under time pressure due to ED volume is a real liability flag. If this patient later has a bad outcome, that line suggests the workup was rushed rather than based on clinical judgment.
+There is also no recorded reasoning for why troponin was skipped, no risk assessment (age, history of heart disease, diabetes, smoking, family history), and no clear safety-netting instructions. Those gaps make the note hard to defend.
+
+This looks like an incomplete chest pain evaluation with weak documentation. 
+The safer path would have been a troponin test (often repeated a few hours apart), a 
+documented risk assessment, clear return-to-ER instructions, and arranged follow-up before sending the patient home.
+
+
+SONNET:
+
+Clinical Risks
+Missing troponin test — most critical issue
+
+Troponin is a blood test that detects heart muscle damage. It is the standard test for ruling out a heart attack. 
+A normal EKG alone is not enough — a patient can have a completely normal EKG and still be having a heart attack. 
+Without troponin, this workup is medically incomplete.
+
+Two days of chest pain sent home without full workup
+
+Chest pain lasting 48 hours significantly raises the concern for serious cardiac conditions including unstable angina 
+or myocardial infarction. This duration alone typically warrants a thorough cardiac investigation before discharge.
+
+Ibuprofen is the wrong treatment if this is cardiac
+
+Ibuprofen is an anti-inflammatory painkiller. It is not appropriate for cardiac chest pain and can actually increase cardiovascular risk. If the underlying cause is heart-related, this medication could cause harm and mask deteriorating symptoms.
+Vague discharge advice
+
+"Follow up if symptoms worsen" gives the patient no clear guidance. Chest pain from a cardiac event can stay steady 
+or even temporarily ease while the condition worsens. The patient needs specific warning signs spelled out — 
+such as pain spreading to the arm or jaw, breathlessness, sweating, or dizziness.
+
+Documentation Risks
+Time pressure recorded as a clinical factor
+
+The attending noted being rushed due to ED volume. This is a significant legal and professional liability. 
+It implies the discharge decision was driven by workload rather than clinical safety, which would be very hard 
+to defend if the patient deteriorates.
+
+No explanation for skipping troponin
+
+The note does not document why the troponin was not ordered. Without written justification, this reads 
+as an omission rather than a deliberate, reasoned clinical choice.
+No cardiac risk assessment documented
+
+There is no record of the patient's age, prior heart conditions, diabetes, smoking history, cholesterol levels, 
+or family history of heart disease. These are essential factors in any chest pain evaluation and must be documented 
+to justify a discharge decision.
+No confirmed follow-up
+
+The note says the patient was "advised to follow up" but there is no confirmed appointment, 
+referral, or named provider. This does not meet the standard of a safe discharge plan.
+
+
+
+Opus 4.6 — Best Overall
+Deepest thinking. Catches subtle risks, explains the why behind each danger, and flags legal/liability issues most thoroughly. Best choice when patient safety is at stake.
+
+Sonnet 4.6 — Best Balance
+Nearly as thorough as Opus but faster. Covers all major risks clearly in plain language. Best for everyday clinical use.
+
+Haiku 4.5 — Fastest but Basic
+Quick and simple. Good for a rapid first scan. May miss subtle risks and documentation gaps.
+
+
