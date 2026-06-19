@@ -51,7 +51,7 @@ from yt_dlp import YoutubeDL
 from hume import AsyncHumeClient
 
 # SET YOUR API KEY
-os.environ["HUME_API_KEY"] = "zEinywc5DJaKCppgD2Brz1APQ1lOounnApzsF22sOGvdFoga"
+os.environ["HUME_API_KEY"] = ""
 
 
 # FIXED YOUTUBE DOWNLOADER (NO JS ERROR)
