@@ -1,0 +1,90 @@
+Multi-Agent
+1. Massive Parallelization Opportunity
+
+The prompt explicitly states:
+Each contract can be analyzed independently
+A single agent processing 800 contracts sequentially would likely miss the SLA
+2. Different Legal Tasks Require Different Expertise
+
+The workflow contains distinct reasoning stages:
+
+| Stage                | Domain                 |
+| -------------------- | ---------------------- |
+| Clause Extraction    | Contract Analysis      |
+| Regulatory Mapping   | Compliance             |
+| Dependency Discovery | Graph Reasoning        |
+| Executive Reporting  | Business Risk Analysis |
+
+
+Cross-Document Synthesis Exists
+Four-Hour SLA Favors Distributed Processing
+
+Why Single-Agent is a Poor Fit
+
+Problems:
+
+Huge context window requirements
+Poor scalability
+Long runtime
+Difficult fault isolation
+
+If Contract #517 fails, the whole process may need restarting.
+
+                    ┌──────────────────────┐
+                    │ 800 Uploaded Docs    │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+
+                ┌────────────────────────────┐
+                │ Document Dispatcher Agent  │
+                └──────────┬─────────────────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+        ▼                  ▼                  ▼
+
+ ┌──────────────┐   ┌──────────────┐   ┌──────────────┐
+ │ Extractor 1  │   │ Extractor 2  │   │ Extractor N  │
+ └──────┬───────┘   └──────┬───────┘   └──────┬───────┘
+        │                  │                  │
+        ▼                  ▼                  ▼
+
+ Structured Clauses & Obligations Repository
+
+                           │
+                           ▼
+
+            ┌───────────────────────────┐
+            │ Regulatory Review Agent   │
+            │ Jurisdiction Checklist    │
+            └─────────────┬─────────────┘
+                          │
+                          ▼
+
+            ┌───────────────────────────┐
+            │ Dependency Analysis Agent │
+            │ Cross-Contract Links      │
+            └─────────────┬─────────────┘
+                          │
+                          ▼
+
+            ┌───────────────────────────┐
+            │ Executive Summary Agent   │
+            │ RAG Heat Map Generator    │
+            └─────────────┬─────────────┘
+                          │
+                          ▼
+
+              Final Due Diligence Report
+
+
+
+
+I would choose a Multi-Agent Architecture because the workload naturally separates into two phases: 
+a highly parallel contract-extraction stage and a cross-document synthesis stage. 
+The 800 contracts are independent during extraction, making them ideal for parallel processing by multiple extraction 
+agents, while later stages require specialized agents for regulatory review, dependency analysis, 
+and executive risk reporting. A single-agent architecture would struggle to meet the 4-hour SLA due to sequential 
+processing and context limitations. 
+A Map-Reduce style multi-agent architecture provides scalability, fault isolation, and efficient cross-document reasoning.

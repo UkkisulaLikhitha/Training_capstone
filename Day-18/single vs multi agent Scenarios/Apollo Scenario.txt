@@ -1,0 +1,116 @@
+Multi-agent
+1. Distinct Knowledge Domains
+
+Each stage requires specialized expertise:
+
+Stage					Domain
+CT Scan Interpretation		Radiology
+Medication Cross-Check		Clinical Decision Support / Pharmacology
+Follow-up Recommendation	Care Pathway Management
+Appointment Booking		EMR Operations
+GP Letter & Patient Summary	Medical Communication
+
+The process is not just sequential—it requires approval checkpoints.
+
+CT Scan
+   ↓
+Radiology Report
+   ↓ (validation gate)
+Contraindication Check
+   ↓ (validation gate)
+Follow-up Recommendation
+   ↓ (validation gate)
+EMR Scheduling
+   ↓
+Patient Communication
+
+3. Different Tool Access / Security Boundaries
+
+Radiology agent:
+
+PACS system
+Imaging models
+
+Clinical CDS agent:
+
+Medication history
+Drug interaction databases
+
+Scheduling agent:
+
+EMR scheduling APIs
+
+Communication agent:
+
+Patient communication templates
+GP letter generation
+
+Healthcare systems typically follow the principle of least privilege, making separate agents preferable.
+
+4. Failure Isolation
+
+Suppose:
+
+Radiology report succeeds
+Medication checker detects contraindication
+
+The workflow should stop immediately and escalate to a clinician.
+
+Multi-agent systems naturally support:
+
+Human-in-the-loop reviews
+Escalation workflows
+Audit logging
+Regulatory compliance
+
+
+                    ┌───────────────────┐
+                    │ Chest CT Scan     │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+
+                ┌─────────────────────────┐
+                │ Radiology Agent         │
+                │ CT Interpretation LLM   │
+                └─────────┬───────────────┘
+                          │
+                          ▼
+                 Validation Gate #1
+                   (Radiologist)
+
+                          │
+                          ▼
+
+                ┌─────────────────────────┐
+                │ Clinical CDS Agent      │
+                │ Medication Checker      │
+                └─────────┬───────────────┘
+                          │
+                          ▼
+                 Validation Gate #2
+               (Contraindication Review)
+
+                          │
+                          ▼
+
+                ┌─────────────────────────┐
+                │ Care Pathway Agent      │
+                │ Recommend PET/Biopsy    │
+                └─────────┬───────────────┘
+                          │
+                          ▼
+
+                ┌─────────────────────────┐
+                │ Scheduling Agent        │
+                │ EMR Integration         │
+                └─────────┬───────────────┘
+                          │
+                          ▼
+
+                ┌─────────────────────────┐
+                │ Communication Agent     │
+                │ GP + Patient Summary    │
+                └─────────────────────────┘
+
+

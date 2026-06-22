@@ -1,0 +1,68 @@
+Multi-Agent ✅
+This is one of the strongest multi-agent use cases because the scenario contains:
+
+✅ Concurrent investigations
+✅ Different tool surfaces
+✅ Human approval gates
+✅ Autonomous remediation actions
+
+                     ┌────────────────────┐
+                     │ Alert Triggered    │
+                     │ p99 = 4.2s         │
+                     └─────────┬──────────┘
+                               │
+                               ▼
+
+                ┌──────────────────────────┐
+                │ Supervisor Agent         │
+                │ Incident Orchestrator    │
+                └───────────┬──────────────┘
+                            │
+      ┌─────────────────────┼─────────────────────┐
+      │                     │                     │
+      ▼                     ▼                     ▼
+
+┌───────────────┐  ┌────────────────┐  ┌────────────────┐
+│ Metrics Agent │  │ Deployment     │  │ Database Agent │
+│ Datadog       │  │ Agent          │  │ AWS RDS Logs   │
+└──────┬────────┘  │ GitHub Actions │  └──────┬─────────┘
+       │           └──────┬─────────┘         │
+       └──────────────────┼───────────────────┘
+                          │
+                          ▼
+
+              ┌──────────────────────┐
+              │ RCA Synthesis Agent  │
+              │ Confidence Scoring   │
+              └──────────┬───────────┘
+                         │
+              Confidence ≥ 80% ?
+                     /         \
+                   Yes         No
+                    │           │
+                    ▼           ▼
+
+         ┌────────────────┐   Human Approval
+         │ Remediation    │          │
+         │ Agent          │◄─────────┘
+         │ kubectl        │
+         └───────┬────────┘
+                 │
+                 ▼
+
+      ┌──────────────────────────┐
+      │ Communication Agent      │
+      │ Slack RCA Report         │
+      └──────────────────────────┘
+
+I would choose a Multi-Agent Architecture because the incident investigation naturally decomposes into
+ independent concurrent tasks across Datadog, GitHub Actions, and AWS RDS. Each task requires different tools, 
+permissions, and expertise, making specialized agents preferable. A supervisor agent can aggregate evidence, 
+calculate confidence, enforce the human-approval gate for risky actions, and invoke a remediation agent only when 
+appropriate. This design improves latency through parallel execution, provides fault isolation, 
+supports least-privilege security, and aligns with real-world DevOps incident response workflows.
+
+Multi-Agent Architecture
+
+Reason: Concurrent investigations, distinct tool surfaces, human approval requirements, autonomous remediation,
+ and fault isolation make a supervisor-led multi-agent system the optimal architecture.

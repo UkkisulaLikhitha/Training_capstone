@@ -1,0 +1,50 @@
+Single Agent
+
+Every step uses the exact same user object:
+With multi-agent systems, this large context would need to be passed repeatedly between agents.
+would choose a Single-Agent Architecture because all processing stages operate on the same user context, 
+the workflow is strictly linear, 
+and there is a hard latency requirement of less than 3 seconds per user across a batch of 4 million users.
+
+Shared context, linear workflow, massive scale (4 million users), and a strict <3-second latency requirement 
+make a single-agent pipeline the most efficient, cost-effective, and scalable architecture.
+ Multi-agent coordination would add overhead without providing meaningful benefits.
+
+                ┌──────────────────┐
+                │ User Context     │
+                │ Purchase History │
+                │ Browse History   │
+                └─────────┬────────┘
+                          │
+                          ▼
+
+                ┌──────────────────┐
+                │ Recommendation   │
+                │ Model            │
+                └─────────┬────────┘
+                          │
+                          ▼
+
+                ┌──────────────────┐
+                │ Business Rules   │
+                │ Inventory Check  │
+                │ Recent Purchase  │
+                └─────────┬────────┘
+                          │
+                          ▼
+
+                ┌──────────────────┐
+                │ Intro Generator  │
+                │ Personalized     │
+                │ Copy             │
+                └─────────┬────────┘
+                          │
+                          ▼
+
+                ┌──────────────────┐
+                │ HTML Assembly    │
+                └─────────┬────────┘
+                          │
+                          ▼
+
+                Personalized Email
