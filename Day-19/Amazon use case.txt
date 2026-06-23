@@ -1,0 +1,135 @@
+
+
+The architecture uses a central MCP Orchestrator to securely coordinate Amazon Ads, SP-API operations, and seller cost systems across separate trust
+ boundaries, while enforcing discovery controls,least-privilege authorization, prompt-injection protection, audit logging, 
+and human approval for all financial or PII-sensitive actions.
+
+
+┌───────────────────────────────────────────────────────────────┐
+│                    HUMAN APPROVAL LAYER                       │
+├───────────────────────────────────────────────────────────────┤
+│ Budget Changes | Price Changes | Refunds | Campaign Launches │
+└─────────────────────────▲─────────────────────────────────────┘
+                          │
+                          │ Approval Required
+                          ▼
+
+┌───────────────────────────────────────────────────────────────┐
+│                  MCP ORCHESTRATOR AGENT                       │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│  • Planning                                                   │
+│  • Reasoning                                                  │
+│  • Tool Selection                                             │
+│  • Workflow Execution                                         │
+│  • Risk Assessment                                            │
+│  • Policy Enforcement                                         │
+│  • Audit Logging                                              │
+│  • Prompt Injection Defense                                   │
+│                                                               │
+└───────────────┬────────────────┬────────────────┬─────────────┘
+                │                │                │
+                │ MCP            │ MCP            │ MCP
+                ▼                ▼                ▼
+
+┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│ Amazon Ads MCP  │  │ SP-API MCP      │  │ Cost / COGS MCP │
+│ Server          │  │ Server          │  │ Server          │
+└────────┬────────┘  └────────┬────────┘  └────────┬────────┘
+         │                    │                    │
+         ▼                    ▼                    ▼
+
+ ┌───────────────┐    ┌────────────────┐   ┌───────────────┐
+ │ Campaigns     │    │ Orders         │   │ Product Cost  │
+ │ Ad Metrics    │    │ Inventory      │   │ Supplier Cost │
+ │ AMC Reports   │    │ Listings       │   │ Shipping Cost │
+ │ Ad Spend      │    │ Returns        │   │ Margin Rules  │
+ └───────────────┘    │ Settlements    │   └───────────────┘
+                      │ Buyer PII      │
+                      └────────────────┘
+
+═══════════════════════════════════════════════════════════════════
+
+                  SECURITY & GOVERNANCE
+
+  Discovery
+  ─────────
+  ✓ Static Discovery
+  ✓ Trusted MCP Servers Only
+
+  Authorization
+  ─────────────
+  ✓ Least Privilege Access
+  ✓ Restricted Data Tokens (PII)
+
+  Security
+  ────────
+  ✓ Prompt Injection Protection
+  ✓ Audit Logs
+  ✓ Per-Client Isolation
+
+═══════════════════════════════════════════════════════════════════
+
+                    TRUST BOUNDARIES
+
+      AMAZON BOUNDARY                  SELLER BOUNDARY
+ ┌─────────────────────┐      ┌────────────────────────┐
+ │ Amazon Ads MCP      │      │ SP-API MCP            │
+ │ Amazon Ads APIs     │      │ Cost / COGS MCP       │
+ │ AMC                │      │ Orders / Inventory    │
+ └─────────────────────┘      │ Financial Data        │
+                              │ Buyer PII             │
+                              └────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════
+
+                     PROFITABILITY ENGINE
+
+      Amazon Data                     Seller Data
+ ┌─────────────────┐           ┌─────────────────┐
+ │ Revenue         │           │ Product Cost    │
+ │ Fees            │           │ Supplier Cost   │
+ │ Returns         │           │ Shipping Cost   │
+ │ Ad Spend        │           │ Packaging Cost  │
+ └────────┬────────┘           └────────┬────────┘
+          │                             │
+          └──────────────┬──────────────┘
+                         ▼
+
+              ┌──────────────────┐
+              │ Profit Engine    │
+              ├──────────────────┤
+              │ True Net Margin  │
+              │ SKU Profitability│
+              │ Pricing Insights │
+              └──────────────────┘
+
+
+
+
+| Domain           | Design Decision                                | Rationale                                   |
+| ---------------- | ---------------------------------------------- | ------------------------------------------- |
+| Topology         | Single MCP Orchestrator + Multiple MCP Servers | Simplifies coordination and governance      |
+| Discovery        | Static discovery (pinned servers)              | Prevents rogue server registration          |
+| Authorization    | Least Privilege + Restricted Data Tokens       | Protects customer PII                       |
+| Governance       | Human-in-the-loop for risky actions            | Prevents financial mistakes                 |
+| Security         | Prompt Injection Protection                    | Reviews/messages are untrusted              |
+| Trust Boundary   | Separate Amazon and Seller domains             | Different ownership/compliance requirements |
+| Transport        | JSON-RPC + HTTPS + SSE                         | Standard MCP communication                  |
+| State Management | Async jobs for reports                         | SP-API reports are long-running             |
+| Auditability     | Centralized audit logs                         | Compliance and traceability                 |
+| Profitability    | Combine Amazon data with COGS                  | Amazon doesn't know actual product costs    |
+
+
+
+
+
+Architecture Explanation:
+Discovery → Only approved MCP servers are allowed (Ads, SP-API, Cost MCP).
+Authorization → Least-privilege access with Restricted Data Tokens for PII.
+Governance → Reads run autonomously; writes affecting money or customers require approval.
+Security → Reviews and buyer messages are treated as untrusted input to prevent prompt injection.
+Trust Boundaries → Amazon Ads remains in Amazon's boundary; SP-API and cost data remain in the seller's boundary.
+Transport → MCP communication uses JSON-RPC over HTTPS with SSE for streaming updates.
+Profitability → Revenue, fees, returns, and ad spend are combined with internal COGS data to calculate true margin.
+
