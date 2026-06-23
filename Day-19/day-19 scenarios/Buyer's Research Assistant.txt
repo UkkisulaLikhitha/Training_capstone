@@ -1,0 +1,66 @@
+Buyer's Research Assistant:
+Best Pattern: Magentic
+
+Why?
+
+This is an open-ended research problem.
+
+Requirements:
+
+Dynamic planning
+Agent creation as needed
+Tool usage
+Web search
+Data gathering
+Adaptive workflow
+
+Magentic excels when:
+
+Workflow is not predefined
+Agents collaborate dynamically
+Tasks emerge during execution
+
+Why not others?
+
+| Pattern       | Reason                         |
+| ------------- | ------------------------------ |
+| Round Robin   | Fixed turn taking              |
+| Selector      | Picks one agent only           |
+| Swarm/Handoff | Good, but lacks planning layer |
+| GraphFlow     | Workflow unknown beforehand    |
+
+                 +--------------------+
+                 | User Request       |
+                 +---------+----------+
+                           |
+                           v
+
+                 +--------------------+
+                 | Planner Agent      |
+                 +---------+----------+
+                           |
+          +----------------+----------------+
+          |                |                |
+          v                v                v
+
+ +----------------+ +----------------+ +----------------+
+ | Trend Research | | Supplier Search| | Market Analyst |
+ | Agent          | | Agent          | | Agent          |
+ +-------+--------+ +-------+--------+ +-------+--------+
+         |                  |                  |
+         +---------+--------+--------+---------+
+                   |                 |
+                   v                 v
+
+            +----------------------+
+            | Synthesis Agent      |
+            +----------+-----------+
+                       |
+                       v
+
+            +----------------------+
+            | Final Report Agent   |
+            +----------+-----------+
+                       |
+                       v
+                  User Output

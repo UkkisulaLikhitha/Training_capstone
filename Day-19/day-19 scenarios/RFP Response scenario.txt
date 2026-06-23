@@ -1,0 +1,74 @@
+RFP Response Builder:
+
+Best Pattern: GraphFlow
+Why?
+
+This is a structured workflow with:
+
+Fixed sequence
+Multiple specialized agents
+Review stage
+Feedback loops (rework)
+Defined dependencies
+
+GraphFlow is designed exactly for workflows that contain:
+
+Sequential execution
+Conditional routing
+Rework cycles
+Approval gates
+
+
+
+why not other:
+
+| Pattern       | Reason                          |
+| ------------- | ------------------------------- |
+| Round Robin   | No control over sequence/rework |
+| Selector      | Chooses one agent only          |
+| Swarm/Handoff | Dynamic, not structured         |
+| Magentic      | Too flexible, unnecessary       |
+
+
+               +----------------+
+               |   User/RFP     |
+               +-------+--------+
+                       |
+                       v
+            +--------------------+
+            | Technical Agent    |
+            +---------+----------+
+                      |
+                      v
+            +--------------------+
+            | Pricing Agent      |
+            +---------+----------+
+                      |
+                      v
+            +--------------------+
+            | Compliance Agent   |
+            +---------+----------+
+                      |
+                      v
+            +--------------------+
+            | Timeline Agent     |
+            +---------+----------+
+                      |
+                      v
+            +--------------------+
+            | Assembly Agent     |
+            +---------+----------+
+                      |
+                      v
+            +--------------------+
+            | Reviewer Agent     |
+            +---------+----------+
+                      |
+          +-----------+------------+
+          | Approved?             |
+          +-----------+------------+
+               |Yes       |No
+               v          v
+         Final RFP   Back to
+                     Required
+                     Section

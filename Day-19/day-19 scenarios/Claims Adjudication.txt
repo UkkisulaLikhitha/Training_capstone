@@ -1,0 +1,59 @@
+Claims Adjudication:
+Best Pattern: GraphFlow
+
+Why?
+
+This is a classic parallel execution + merge workflow.
+
+GraphFlow supports:
+
+Parallel branches
+Synchronization points
+Aggregation nodes
+Final decision node
+
+
+Why not others?
+
+| Pattern       | Reason                    |
+| ------------- | ------------------------- |
+| Round Robin   | Sequential, inefficient   |
+| Selector      | Only one agent selected   |
+| Swarm/Handoff | No guaranteed parallelism |
+| Magentic      | Overkill                  |
+
+
+                    +----------------+
+                    | Claim Request  |
+                    +--------+-------+
+                             |
+                             v
+                  +-------------------+
+                  | Start Processing  |
+                  +---------+---------+
+                            |
+       +--------------------+--------------------+
+       |                    |                    |
+       v                    v                    v
+
++---------------+   +---------------+   +---------------+
+| Fraud Check   |   | Coverage      |   | Medical Code  |
+| Agent         |   | Agent         |   | Agent         |
++-------+-------+   +-------+-------+   +-------+-------+
+        |                   |                   |
+        +---------+---------+---------+---------+
+                  |                   |
+                  v                   v
+
+          +-----------------------+
+          | Result Aggregator     |
+          +-----------+-----------+
+                      |
+                      v
+          +-----------------------+
+          | Decision Agent        |
+          | Approve / Deny        |
+          +-----------+-----------+
+                      |
+                      v
+                Final Output
