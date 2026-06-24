@@ -1,0 +1,11 @@
+{
+  "incident_id": "INC-2031",
+  "title": "Checkout latency spike",
+  "timeline": [
+    {"ts": "2026-06-18T14:02:00Z", "type": "incident_start"},
+    {"ts": "2026-06-18T14:09:00Z", "type": "detected"},
+    {"ts": "2026-06-18T14:12:00Z", "type": "acknowledged"},
+    {"ts": "2026-06-18T14:41:00Z", "type": "mitigated"},
+    {"ts": "2026-06-18T16:05:00Z", "type": "resolved"}
+  ]
+}

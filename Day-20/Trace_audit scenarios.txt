@@ -1,0 +1,161 @@
+# Trace / Spans vs Audit Log
+
+# Ticket 03 / 08
+
+## Scenario
+Prove the PII-redaction guardrail ran before the model call on all 12,400 approvals last quarter.
+
+ Answer
+**AUDIT LOG**
+
+## Reason
+Compliance requires proof across all 12,400 approvals.
+
+Trace data is sampled and cannot guarantee complete coverage of every request. Audit logs are complete, immutable, and retained long term, making them suitable for compliance evidence.
+
+---------------------------------------------------------------------
+
+Ticket 04 / 08
+
+## Scenario
+You're reproducing a single failing request in staging. Show the full call tree and pinpoint where it errored.
+
+## Answer
+**TRACE / SPANS**
+
+## Reason
+You need the full execution path, timing information, and exact error location.
+
+Trace data captures request flow across services and components, making it ideal for debugging and root-cause analysis.
+
+----------------------------------------------------------------------------------------------------------------------------
+
+# Ticket 05 / 08
+
+## Scenario
+FinOps wants average cost and tokens per request on a live dashboard. Sampling 10% is acceptable.
+
+## Answer
+**TRACE / SPANS**
+
+## Reason
+FinOps needs operational metrics such as:
+
+- Token usage
+- Request cost
+- Latency
+- Throughput
+
+Since 10% sampling is acceptable, trace systems are the correct choice because observability platforms are specifically designed for this use case.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+# Ticket 06 / 08
+
+## Scenario
+This decision record must survive even a DBA with write access trying to alter it three years from now.
+
+## Answer
+**AUDIT LOG**
+
+## Reason
+Only an Audit Log provides:
+
+- Immutable records
+- Append-only storage
+- Hash chaining
+- Tamper evidence
+- Long-term retention
+
+Even if a database administrator attempts to modify records years later, tampering can be detected.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+# Ticket 08 / 08
+
+## Scenario
+A guardrail blocked a suspicious transaction.
+
+Compliance needs a permanent record that it was blocked, while SRE/on-call needs to investigate why the guardrail blocked a legitimate-looking request.
+
+## Answer
+**BOTH**
+
+Reason:
+
+### Audit Log
+Provides:
+
+- Permanent record
+- Compliance evidence
+- Proof that the transaction was blocked
+
+### Trace / Spans
+Provides:
+
+- Request execution path
+- Guardrail execution details
+- Root-cause debugging information
+
+ Why Both?
+Compliance needs the Audit Log for proof of the blocked transaction, while SRE/on-call needs the Trace Log to investigate why the guardrail blocked a legitimate-looking request.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+
+# Decision Guide
+
+| Requirement 			| 	Use 	|
+|------------				------	|
+| Debug a failure 		| Trace / Spans |
+| Find latency bottlenecks 	| Trace / Spans |
+| View execution path 		| Trace / Spans |
+| Cost and token analytics 	| Trace / Spans |
+| Compliance proof 		| Audit Log 	|
+| Who approved an action 	| Audit Log 	|
+| Long-term immutable record 	| Audit Log 	|
+| Legal evidence 		| Audit Log 	|
+| Need proof and debugging 	| Both 		|
+
+-------------------------------------------------------------------
+
+# Summary
+
+## Trace / Spans
+Answer:
+> How did the system run?
+
+Used for:
+- Observability
+- Debugging
+- Performance analysis
+- Cost tracking
+
+---
+
+## Audit Log
+Answer:
+> What happened, who did it, and can we prove it?
+
+Used for:
+- Compliance
+- Security
+- Governance
+- Legal evidence
+
+---
+
+## Both
+Use both when you need:
+
+- Compliance proof
+- Permanent records
+- Operational debugging
+- Root-cause analysis
+
+Typically both systems are linked using a common:
+
+- Trace ID
+- Request ID
+- Correlation ID
