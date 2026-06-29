@@ -1,0 +1,54 @@
+Request for Proposal — Supply Chain Visibility Platform
+=======================================================
+
+1. Client / Organisation
+  Pied Piper Logistics
+
+2. RFP Reference Number
+  RFP-2026-LOG-259
+
+3. Solution Domain
+  Logistics / Supply Chain
+
+4. Region
+  Global
+
+5. Submission Deadline
+  03 Sep 2026
+
+6. Background
+  Pied Piper Logistics seeks a real-time supply chain visibility platform to track shipments end-to-end, predict delays, and optimise routing across global lanes.
+
+7. Functional Requirements
+  - Provide end-to-end shipment tracking across ocean, air, and road.
+  - Deliver predictive ETA and delay alerts.
+  - Integrate with carrier APIs and EDI feeds.
+  - Offer a control-tower dashboard with exception management.
+  - Provide route and cost optimisation recommendations.
+
+8. Non-Functional Requirements
+  - Ingest tracking events from 200 carriers in near real time.
+  - Dashboard refresh under 5 seconds.
+  - Availability of 99.9%.
+
+9. Compliance & Security Requirements
+  - GDPR compliance for any personal data in shipping records.
+  - SOC 2 Type II certified.
+  - Customs and trade-compliance data handling.
+
+10. Commercial / Pricing Line Items
+  - Visibility platform subscription (per shipment, 500000 shipments/yr)
+  - Carrier integration package (per carrier, 200 carriers)
+  - Implementation services (labor, estimated 1800 hours)
+  - Support & SLA (annual)
+
+11. Evaluation Criteria
+  - Visibility & prediction 40%
+  - Integration breadth 25%
+  - Price 20%
+  - Compliance 15%
+
+12. Submission Instructions
+  - Responses must be submitted in PDF or DOCX format by the submission deadline.
+  - Vendors must address every functional and compliance requirement explicitly.
+  - Pricing must be itemised and valid for 90 days.

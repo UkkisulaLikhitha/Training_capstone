@@ -1,0 +1,54 @@
+Request for Proposal — 5G Private Network Deployment
+====================================================
+
+1. Client / Organisation
+  Hooli Telecom
+
+2. RFP Reference Number
+  RFP-2026-TEL-410
+
+3. Solution Domain
+  Telecommunications
+
+4. Region
+  Asia Pacific
+
+5. Submission Deadline
+  30 Aug 2026
+
+6. Background
+  Hooli Telecom seeks a vendor to design and deploy a private 5G network for an industrial campus, enabling low-latency connectivity for automation and AGVs.
+
+7. Functional Requirements
+  - Design and deploy a private 5G standalone (SA) network across a 2 sq km campus.
+  - Provide 30 small-cell radio units with full indoor and outdoor coverage.
+  - Deliver network slicing for critical and best-effort traffic.
+  - Integrate with the campus core and existing Wi-Fi.
+  - Provide a network management and monitoring portal.
+
+8. Non-Functional Requirements
+  - End-to-end latency under 10 ms for critical slices.
+  - 99.99% network availability.
+  - Support 5,000 connected devices.
+
+9. Compliance & Security Requirements
+  - Comply with national telecom spectrum regulations.
+  - Adhere to 3GPP Release 16 standards.
+  - Data residency within the country.
+
+10. Commercial / Pricing Line Items
+  - 5G core & RAN equipment (per site)
+  - Small-cell radio units (per unit, 30 units)
+  - Deployment & integration (labor, estimated 2500 hours)
+  - Managed network operations (per year)
+
+11. Evaluation Criteria
+  - Network design 40%
+  - Performance & SLAs 25%
+  - Price 20%
+  - Compliance 15%
+
+12. Submission Instructions
+  - Responses must be submitted in PDF or DOCX format by the submission deadline.
+  - Vendors must address every functional and compliance requirement explicitly.
+  - Pricing must be itemised and valid for 90 days.
